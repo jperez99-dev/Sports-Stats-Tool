@@ -24,7 +24,25 @@ def main():
                     cleanedPlayerData[i][list(constants.PLAYERS[i].keys())[j]] = int(heightSplit[0])
                 else:
                     cleanedPlayerData[i][list(constants.PLAYERS[i].keys())[j]] = constants.PLAYERS[i][list(constants.PLAYERS[i].keys())[j]]
-        print(cleanedPlayerData)
+
+        return cleanedPlayerData
+
+   
+    
+    def playerBalance(x):
+        teams = []
+        playerNames = []
+        players = cleandata()
+        for i in range(len(constants.TEAMS)):
+            teams.append(constants.TEAMS[i])
+
+        n = int(len(players)/ len(teams))
+        print(f"Player count: {n}")
+        final = [players[i * n:(i + 1) * n] for i in range((len(players) + n - 1) // n )]
+        for i in range(len(final[x])):
+            playerNames.append(final[x][i]["name"])
+        print(*playerNames, sep = ", ")
+        
     def display():
         loop = True
         print("""BASKETBALL TEAM STATS TOOL
@@ -37,8 +55,17 @@ B) Quit""")
         while loop:
             userInput = input("Enter an option: ")
             if userInput == 'a' or userInput.upper() == 'A':
-                cleandata()
+                print("""A) Panthers
+B) Bandits
+c) Warriors""")
+                userInput2 = input("Enter an option: ")
                 loop = False
+                if userInput2 == 'a' or userInput2.upper() == 'A':
+                    playerBalance(0)
+                elif userInput2 == 'b' or userInput2.upper() == 'B':
+                    playerBalance(1)
+                elif userInput2 == 'c' or userInput2.upper() == 'C':
+                    playerBalance(2)
             elif userInput == 'b' or userInput.upper() == 'B':
                 quit()
             else: 
@@ -46,8 +73,7 @@ B) Quit""")
 
     
         
-        
-        
+          
     display()
 
 
