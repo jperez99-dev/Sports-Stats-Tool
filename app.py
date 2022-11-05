@@ -30,6 +30,8 @@ def main():
    
     
     def playerBalance(x):
+        """ This will take the players from cleandata function and loop through the dictionaries and print out amount the number of  players and names on each team.
+        """
         teams = []
         playerNames = []
         players = cleandata()
@@ -42,34 +44,51 @@ def main():
         for i in range(len(final[x])):
             playerNames.append(final[x][i]["name"])
         print(*playerNames, sep = ", ")
+
+
+
+
         
     def display():
-        loop = True
-        print("""BASKETBALL TEAM STATS TOOL
+        """ This function is used to display the options that the user will have when navigating the menu. Depending on user selection it will call the player balance
+            function with different arguments depending on the team selection.
+        """
+        print("BASKETBALL TEAM STATS TOOL\n \n---- MENU ----\n \nOPTIONS:\n A) Display Team Stats\n B) Quit")
+        loop1 = True
+        while loop1:
+            try:
+                userInput = input("Enter an option: ")
+                if userInput == 'a' or userInput.upper() == 'A':
+                        print("A) Panthers\nB) Bandits\nC) Warriors")         
+                        loop2 = True
+                        while loop2:
+                            try:
+                                userInput2 = input("Enter an option: ")
+                                loop = False
+                    
+                                if userInput2 == 'a' or userInput2.upper() == 'A':
+                                    playerBalance(0)
+                                    loop2 = False
+                                    loop1 = False
+                                elif userInput2 == 'b' or userInput2.upper() == 'B':
+                                    playerBalance(1)
+                                    loop2 = False
+                                    loop1 = False
+                                elif userInput2 == 'c' or userInput2.upper() == 'C':
+                                    playerBalance(2)
+                                    loop2 = False
+                                    loop1 = False
+                                else:
+                                    raise ValueError
+                            except ValueError as err:
+                                print("Not a valid option")
 
----- MENU ----
-
-OPTIONS:
-A) Display Team Stats
-B) Quit""")
-        while loop:
-            userInput = input("Enter an option: ")
-            if userInput == 'a' or userInput.upper() == 'A':
-                print("""A) Panthers
-B) Bandits
-c) Warriors""")
-                userInput2 = input("Enter an option: ")
-                loop = False
-                if userInput2 == 'a' or userInput2.upper() == 'A':
-                    playerBalance(0)
-                elif userInput2 == 'b' or userInput2.upper() == 'B':
-                    playerBalance(1)
-                elif userInput2 == 'c' or userInput2.upper() == 'C':
-                    playerBalance(2)
-            elif userInput == 'b' or userInput.upper() == 'B':
-                quit()
-            else: 
-                print("Error please enter the options \"A\" or \"B\"")
+                elif userInput == 'b' or userInput.upper() == 'B':
+                        quit()
+                else:
+                    raise ValueError
+            except ValueError as e:
+                print("Not a valid option")
 
     
         
