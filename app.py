@@ -67,14 +67,17 @@ def main():
                                 loop = False
                     
                                 if userInput2 == 'a' or userInput2.upper() == 'A':
+                                    print("\nTeam: Panthers Stats\n--------------------")
                                     playerBalance(0)
                                     loop2 = False
                                     loop1 = False
                                 elif userInput2 == 'b' or userInput2.upper() == 'B':
+                                    print("\nTeam: Bandits Stats\n-------------------")
                                     playerBalance(1)
                                     loop2 = False
                                     loop1 = False
                                 elif userInput2 == 'c' or userInput2.upper() == 'C':
+                                    print("\nTeam: Warriors Stats\n--------------------")
                                     playerBalance(2)
                                     loop2 = False
                                     loop1 = False
